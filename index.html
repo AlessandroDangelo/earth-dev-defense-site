@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Earth Dev Defense — Análogos Terrestres para a Lua e Marte</title>
+  <meta name="description" content="Quais lugares da Terra mais se parecem com as regiões candidatas a base na Lua e com locais de Marte — e em quê. Equipe Earth Dev Defense, NASA Space Apps Challenge 2026, Ouro Preto.">
+  <meta name="theme-color" content="#08103F">
+  <link rel="icon" href="assets/logo-equipe.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" as="image" href="assets/img/lua_polo_sul.webp" type="image/webp">
+  <link rel="stylesheet" href="style.css?v=13">
+</head>
+<body>
+  <a class="pular" href="#analise">Pular para a análise</a>
+
+  <!-- Navegação -->
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="marca" href="#inicio" aria-label="NASA Space Apps Challenge 2026 — início">
+        <img src="assets/logo-space-apps.png" alt="NASA Space Apps Challenge" class="logo" width="113" height="44">
+        <span class="marca-texto"><strong>2026</strong><span>Ouro Preto, Brasil</span></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-menu"/></svg>
+      </button>
+      <nav id="menu" aria-label="Seções">
+        <a href="#desafio">Desafio</a>
+        <a href="#analise">Análise</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#equipe">Equipe</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Abertura -->
+  <section id="inicio" class="hero">
+    <div class="hero-fundo" aria-hidden="true">
+      <img class="hero-lua" src="assets/img/lua_polo_sul.webp" alt="" width="1000" height="1000" fetchpriority="high">
+      <img class="hero-marte" src="assets/img/marte_hemisferio.webp" alt="" width="1000" height="944" loading="lazy">
+    </div>
+    <div class="hero-inner">
+      <p class="selo-hero">
+        <img src="assets/logo-equipe.jpg" alt="Logo da equipe Earth Dev Defense" width="40" height="40">
+        <span><strong>Earth Dev Defense</strong> · desafio de análogos da Lua e de Marte</span>
+      </p>
+      <h1>Onde, na Terra, ensaiar a vida na <span class="destaque-lua">Lua</span> e em <span class="destaque-marte">Marte</span>?</h1>
+      <p class="lead">Comparamos relevo, solo, temperatura e geologia de lugares da Terra com regiões da Lua e de Marte,
+        usando dados abertos da NASA, ESA e USGS.</p>
+      <div class="numeros" id="numeros"></div>
+      <a class="botao botao-primario" href="#analise">Ver os lugares mais parecidos
+        <svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-arrow-down"/></svg></a>
+      <p class="credito-hero">Fundo: polo sul da Lua (Clementine) e Marte (Viking) — NASA/JPL/USGS</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- Desafio -->
+    <section id="desafio" class="secao">
+      <header class="cabeca-secao">
+        <h2 class="titulo-secao">Desafio</h2>
+        <p class="intro">Por que procurar, aqui na Terra, lugares parecidos com a Lua e com Marte.</p>
+      </header>
+
+      <div class="desafio-grade">
+        <div class="desafio-texto">
+          <h3>O que a NASA pediu</h3>
+          <p>Usar dados abertos para <strong>encontrar e descrever lugares da Terra parecidos</strong> com as futuras
+            bases na Lua e com locais de pouso em Marte — e mostrar isso num mapa ou ferramenta interativa.</p>
+          <details class="saiba">
+            <summary>Ler o enunciado completo</summary>
+            <p class="nota-desafio">Desafio <em lang="en">“Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars”</em>.</p>
+            <p>Escolher onde pousar e onde montar uma base na Lua ou em Marte depende de muitos fatores: relevo,
+              geologia, ambiente e recursos disponíveis. Lugares da Terra com características parecidas — como o
+              Deserto do Atacama, a cratera de Haughton e o Vale da Morte — permitem testar equipamentos e métodos antes
+              do voo, mas ainda são pouco caracterizados.</p>
+            <p>O desafio é usar dados abertos da Terra, da Lua e de Marte para <strong>identificar e caracterizar
+              análogos terrestres</strong> para futuras bases e locais de pouso — desertos, regiões polares, terrenos
+              vulcânicos e áridos — e apresentar o resultado como um mapa, uma visualização ou outra ferramenta.</p>
+            <p class="nota">Paráfrase do enunciado oficial do NASA Space Apps Challenge 2026.</p>
+          </details>
+        </div>
+        <figure class="trio" id="trio">
+          <!-- preenchido por app.js com as miniaturas reais de relevo (dados do projeto) -->
+        </figure>
+      </div>
+
+      <h3 class="sub">Por que identificar ambientes análogos na Terra?</h3>
+      <ul class="motivos">
+        <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-shield-check"/></svg>
+          <div><strong>Validação de tecnologias</strong><span>Testar equipamentos e soluções em condições semelhantes às encontradas na Lua e em Marte.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-triangle-alert"/></svg>
+          <div><strong>Redução de riscos</strong><span>Identificar falhas e limitações antes de enviar tecnologias para missões espaciais.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-piggy-bank"/></svg>
+          <div><strong>Redução de custos</strong><span>Evitar missões experimentais desnecessárias e investimentos em equipamentos não validados.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-recycle"/></svg>
+          <div><strong>Sustentabilidade espacial</strong><span>Reduzir a geração de resíduos decorrentes de missões malsucedidas e equipamentos abandonados.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-leaf"/></svg>
+          <div><strong>Preservação ambiental</strong><span>Minimizar os impactos da exploração espacial e os riscos de contaminação de outros corpos celestes.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-rocket"/></svg>
+          <div><strong>Preparação para futuras missões</strong><span>Desenvolver tecnologias mais confiáveis para exploração e operação fora da Terra.</span></div></li>
+      </ul>
+
+      <p class="destaque-final"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-arrow-right"/></svg>
+        <span><strong>Nossa resposta:</strong> para cada alvo na Lua e em Marte, um ranking dos lugares da Terra mais
+          parecidos — e em quê (relevo, cobertura, temperatura ou geologia).</span></p>
+    </section>
+
+    <!-- Análise -->
+    <section id="analise" class="secao">
+      <header class="cabeca-secao">
+        <h2 class="titulo-secao">Análise</h2>
+        <p class="intro">Escolha um alvo e um tipo de missão; o site mostra os lugares da Terra mais parecidos e por quê.</p>
+      </header>
+
+      <nav class="passos-nav" aria-label="Passos da análise">
+        <a href="#passo-1"><span class="passo">1</span><span class="rot">Alvo</span></a>
+        <a href="#passo-2"><span class="passo">2</span><span class="rot">Missão</span></a>
+        <a href="#passo-3"><span class="passo">3</span><span class="rot">Ranking</span></a>
+        <a href="#detalhe-sec"><span class="passo">4</span><span class="rot">Comparar</span></a>
+        <a href="#passo-5"><span class="passo">5</span><span class="rot">IA</span></a>
+        <a href="#clima-sec"><span class="passo">6</span><span class="rot">Clima</span></a>
+      </nav>
+
+      <div class="bloco" id="passo-1">
+        <h3 class="etapa"><span class="passo">1</span> Escolha o alvo</h3>
+        <div class="abas" role="tablist" aria-label="Corpo celeste">
+          <button role="tab" class="aba" data-corpo="MOON" aria-selected="true">Lua — polo sul (Artemis)</button>
+          <button role="tab" class="aba" data-corpo="MARS" aria-selected="false">Marte — locais de pouso</button>
+        </div>
+        <div id="alvos" class="alvos" role="radiogroup" aria-label="Alvo"></div>
+      </div>
+
+      <div class="bloco" id="passo-2">
+        <h3 class="etapa"><span class="passo">2</span> Para que tipo de missão?</h3>
+        <div id="missoes" class="missoes" role="radiogroup" aria-label="Tipo de missão"></div>
+        <p id="missao-desc" class="legenda-filtro"></p>
+      </div>
+
+      <div class="bloco" id="passo-3">
+        <h3 class="etapa"><span class="passo">3</span> <span id="titulo-ranking" aria-live="polite">Lugares da Terra mais parecidos</span></h3>
+        <div class="filtros">
+          <label class="check"><input type="checkbox" id="mostrar-controles"> mostrar controles (cidades e floresta)</label>
+          <span class="legenda-icones"><span class="selo selo-esa">ESA</span> no Catálogo de Análogos Planetários da ESA para este corpo</span>
+        </div>
+        <div class="grade-ranking">
+          <div class="cartao cartao-ranking">
+            <ol id="ranking" class="ranking" aria-describedby="nota-score"></ol>
+            <p id="nota-score" class="nota">Similaridade de 0 a 100: 50 = tão parecido quanto um par típico deste
+              conjunto; 100 = idêntico. Escala relativa, não probabilidade.</p>
+          </div>
+          <div class="cartao cartao-globo">
+            <div id="globo" role="img" aria-label="Globo 3D da Terra com os lugares analisados; a altura de cada barra indica a similaridade com o alvo"></div>
+            <div id="legenda-globo" class="legenda-globo"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloco" id="detalhe-sec">
+        <h3 class="etapa"><span class="passo">4</span> <span id="titulo-detalhe" aria-live="polite">Compare</span></h3>
+        <div id="detalhe" class="detalhe"></div>
+      </div>
+
+      <div class="bloco" id="passo-5">
+        <h3 class="etapa"><span class="passo">5</span> Segunda opinião: agrupamento por IA (ZEUS)</h3>
+        <p class="intro-bloco">Lugares que a IA coloca no mesmo grupo do alvo, sem saber o que procurar.</p>
+        <div class="filtros">
+          <label for="k">Número de grupos (k): <output id="k-valor"></output></label>
+          <input type="range" id="k" min="2" max="10" step="1">
+        </div>
+        <div id="zeus" class="zeus"></div>
+        <details class="saiba">
+          <summary>Saiba mais sobre o ZEUS</summary>
+          <p>O <a href="https://github.com/gmum/zeus" target="_blank" rel="noopener">ZEUS</a> é um modelo de IA
+            pré-treinado que agrupa os quadrados de 9 km sem que digamos o que procurar. Aqui aparecem os lugares da
+            Terra que caem no mesmo grupo de algum quadrado do alvo. Ele concorda só em parte com o ranking acima.</p>
+          <p id="zeus-qualidade" class="nota"></p>
+        </details>
+      </div>
+
+      <div class="bloco" id="clima-sec">
+        <h3 class="etapa"><span class="passo">6</span> Terceira opinião: clima (só Marte)</h3>
+        <div id="clima"></div>
+      </div>
+
+      <div class="destaque-final" id="resultado-analise"></div>
+    </section>
+
+    <!-- Metodologia -->
+    <section id="metodologia" class="secao">
+      <header class="cabeca-secao">
+        <h2 class="titulo-secao">Metodologia</h2>
+        <p class="intro">Como transformamos mapas de três corpos celestes em um ranking comparável, em 7 etapas.</p>
+      </header>
+      <ol class="pipeline">
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-scan"/></svg></span>
+          <h3><span class="pipe-num">1</span> Recortes</h3><p>Cada lugar vira até 9 quadrados de 9×9 km.</p>
+          <details class="saiba"><summary>Detalhes</summary><p>Cada lugar vira até 9 quadrados de 9×9 km numa
+            grade de 40 m — a menor grade comum aos dados dos três corpos. Assim um lugar não depende de um único ponto.</p></details></li>
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-mountain"/></svg></span>
+          <h3><span class="pipe-num">2</span> Relevo</h3><p>Declividade, rugosidade e desnível de cada quadrado.</p>
+          <details class="saiba"><summary>Fontes e resoluções</summary><p>Modelos de elevação: NASADEM e ArcticDEM/REMA na Terra,
+            LOLA (20 m) na Lua, CTX (20 m) em Marte. Calculamos declividade, rugosidade sem tendência (só as irregularidades
+            de pequena escala) e desnível.</p></details></li>
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-layers"/></svg></span>
+          <h3><span class="pipe-num">3</span> Cobertura</h3><p>Quanto do solo é rocha exposta, gelo, vegetação ou cidade.</p>
+          <details class="saiba"><summary>Fontes e resoluções</summary><p>ESA WorldCover (10 m) na Terra e o mapa de
+            afloramentos rochosos da Antártida (AADC). Na Lua e em Marte a superfície é toda exposta.</p></details></li>
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-thermometer"/></svg></span>
+          <h3><span class="pipe-num">4</span> Temperatura</h3><p>Média e máxima anuais da superfície.</p>
+          <details class="saiba"><summary>Fontes e resoluções</summary><p>NASA POWER (MERRA-2) na Terra,
+            Diviner (LRO) na Lua e o modelo climático da NASA Ames em Marte: média e máxima anuais.</p></details></li>
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-gem"/></svg></span>
+          <h3><span class="pipe-num">5</span> Geologia</h3><p>Tipo de rocha em 6 classes comuns aos três corpos.</p>
+          <details class="saiba"><summary>Fontes e resoluções</summary><p>Mapas geológicos (Macrostrat, USGS Lua 1:5M, USGS
+            Marte 1:20M) traduzidos para 6 classes comuns: vulcânica, cristalina, sedimentar, evaporítica, gelo e impacto.</p></details></li>
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-scale"/></svg></span>
+          <h3><span class="pipe-num">6</span> Similaridade</h3><p>Nota de 0 a 100, com peso igual para os 4 grupos.</p>
+          <details class="saiba"><summary>Detalhes</summary><p>Comparamos cada quadrado do alvo com o quadrado
+            mais parecido de cada lugar da Terra, com peso igual para relevo, cobertura, temperatura e geologia, e
+            mostramos em que grupo eles se parecem.</p></details></li>
+        <li><span class="pipe-ic"><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-cpu"/></svg></span>
+          <h3><span class="pipe-num">7</span> IA e validação</h3><p>Segunda e terceira opiniões e testes contra listas publicadas.</p>
+          <details class="saiba"><summary>Detalhes</summary><p>O ZEUS agrupa os quadrados como segunda
+            opinião e uma camada de clima de Marte (Luís G. O. Miranda: modelo da NASA Ames × 1 ano de dados Meteomatics) dá uma terceira. Validamos contra o Catálogo de Análogos Planetários da ESA e com locais de controle (cidades e floresta).</p></details></li>
+      </ol>
+
+      <div class="grade-3">
+        <article class="cartao">
+          <h3>Por que essas características</h3>
+          <ul class="lista-ic">
+            <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-plane-landing"/></svg><span><strong>Declividade:</strong> segurança do pouso, esforço de rovers e astronautas.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-mountain"/></svg><span><strong>Rugosidade:</strong> blocos e sulcos que travam rodas e pernas de pouso.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-scan"/></svg><span><strong>Desnível:</strong> comunicação por linha de visada, sombra e iluminação.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-thermometer"/></svg><span><strong>Temperatura:</strong> projeto térmico de equipamentos, baterias e trajes.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-layers"/></svg><span><strong>Cobertura:</strong> poeira, superfície exposta e gelo como recurso.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="assets/icones.svg#i-gem"/></svg><span><strong>Geologia:</strong> ciência de campo, amostras e uso de recursos locais.</span></li>
+          </ul>
+        </article>
+        <article class="cartao">
+          <h3>Validação</h3>
+          <p class="nota explica-auc">AUC mede se o método coloca os lugares certos acima dos outros:
+            0,5 = acaso; 1 = separação perfeita.</p>
+          <div id="validacao" class="tiles"></div>
+        </article>
+        <article class="cartao">
+          <h3>Limitações</h3>
+          <ul id="avisos" class="lista"></ul>
+          <details class="saiba" id="avisos-mais"><summary>Ver todas as limitações</summary><ul id="avisos-resto" class="lista"></ul></details>
+        </article>
+      </div>
+
+      <article class="cartao fontes">
+        <h3>Fontes de dados e créditos</h3>
+        <div id="fontes" class="fontes-grupos"></div>
+        <p class="nota">Código, metodologia completa (METODOLOGIA.md) e todas as limitações (docs/LIMITACOES.md) no
+          repositório do projeto.</p>
+      </article>
+
+      <div class="destaque-final" id="resultado-metodologia"></div>
+    </section>
+
+    <!-- Equipe -->
+    <section id="equipe" class="secao">
+      <header class="cabeca-secao">
+        <h2 class="titulo-secao">Equipe</h2>
+        <p class="intro">Quem fez este trabalho no NASA Space Apps Challenge 2026, em Ouro Preto.</p>
+      </header>
+      <div id="equipe-conteudo"></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p><strong>Earth Dev Defense</strong> · NASA Space Apps Challenge 2026 · Ouro Preto, Brasil · dados públicos
+      (NASA, ESA, USGS, PGC, AADC, Macrostrat) · protocolo <span id="protocolo"></span></p>
+  </footer>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.45.3/dist/globe.gl.min.js"></script>
+  <script src="app.js?v=13"></script>
+</body>
+</html>

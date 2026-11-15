@@ -1,0 +1,68 @@
+{
+  "_como_editar": "Preencha email, lattes e linkedin de cada integrante. \"\" = falta preencher (aparece \"a preencher\"); null = a pessoa não tem (o campo some). 'foto' = caminho de uma foto em assets/pessoas/ (opcional; sem foto aparecem as iniciais).",
+  "nome": "Earth Dev Defense",
+  "descricao": "A Earth Dev Defense é uma equipe multidisciplinar formada por estudantes de graduação e pós-graduação, unida pela tecnologia, inovação e pelo desenvolvimento de soluções para desafios reais.",
+  "evento_local": "Ouro Preto, Brasil",
+  "pagina_oficial": "https://www.spaceappschallenge.org/2026/find-a-team/earth-dev-defense/",
+  "fotos": [
+    {
+      "arquivo": "assets/equipe-1.jpg",
+      "legenda": "Equipe Earth Dev Defense no NASA Space Apps Challenge 2026, Ouro Preto"
+    },
+    {
+      "arquivo": "assets/equipe-2.jpg",
+      "legenda": "Equipe Earth Dev Defense durante o hackathon"
+    }
+  ],
+  "integrantes": [
+    {
+      "nome": "Pablo de Oliveira Passarini",
+      "funcao": "Responsável pela equipe",
+      "email": "pablo.passarini@aluno.ufop.edu.br",
+      "lattes": "",
+      "linkedin": "https://www.linkedin.com/in/pablo-passarini-82749218b/",
+      "foto": "assets/pessoas/pablo.jpg"
+    },
+    {
+      "nome": "Luís Gustavo de Oliveira Miranda",
+      "funcao": "",
+      "email": "luis.miranda@ufop.edu.br",
+      "lattes": "",
+      "linkedin": null,
+      "foto": "assets/pessoas/luis.jpg"
+    },
+    {
+      "nome": "Henrique Ulhôa de Faria",
+      "funcao": "",
+      "email": "",
+      "lattes": "",
+      "linkedin": "",
+      "foto": ""
+    },
+    {
+      "nome": "Icaro Luiz Lage Vasconcelos",
+      "funcao": "",
+      "email": "",
+      "lattes": "",
+      "linkedin": "",
+      "foto": ""
+    },
+    {
+      "nome": "Alessandro D’Angelo",
+      "funcao": "",
+      "email": "aledangelopro@gmail.com",
+      "lattes": "",
+      "linkedin": "https://www.linkedin.com/in/alessandro-d-angelo-b063561b2",
+      "foto": "assets/pessoas/alessandro.jpg"
+    },
+    {
+      "nome": "Gabriel Correia Moreira",
+      "funcao": "",
+      "email": "",
+      "lattes": "",
+      "linkedin": "",
+      "foto": ""
+    }
+  ],
+  "logo": "assets/logo-equipe.jpg"
+}
