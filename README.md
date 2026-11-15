@@ -1,6 +1,6 @@
 # Site — Earth Dev Defense · Análogos terrestres para a Lua e Marte
 
-Site estático (HTML + CSS + JavaScript, sem build e sem servidor de aplicação), com a identidade visual do
+Site estático, **em inglês** (exigência do julgamento global), (HTML + CSS + JavaScript, sem build e sem servidor de aplicação), com a identidade visual do
 NASA Space Apps Challenge (azul `#08103F`, branco `#FCFBFF`, vermelho `#D42804`, lima `#EAFE07` para detalhes).
 
 ## Seções
@@ -49,7 +49,7 @@ Ao mudar `style.css` ou `app.js`, aumente o `?v=` no `index.html` para os navega
 `verificar_numeros.js` (não é carregado pelo site) gera uma impressão digital SHA-256 de todos os rankings, notas,
 coclusters do ZEUS e da camada de clima, em todas as combinações de corpo × alvo × missão × controles. No console da
 página: `await (0, eval)(await (await fetch('verificar_numeros.js')).text())`. Valor de referência (v1_7, antes e depois
-do redesign de 2026-11-15): `1651eae9424be5261a11d53e8b2a5a3fb12cc34dbf8801888dc52f580f92c55a`; também devolve a nota
+do redesign de 2026-11-15): `1651eae9…` (versão antiga do script). Desde a tradução para inglês o script ignora textos e o valor de referência é `4f467eb7840d…` (mesmos números: 42.738 valores conferidos um a um contra a versão em português); também devolve a nota
 de Atacama–Chajnantor × Marte (65), as 4 AUCs (0,85 / 0,65 / 0,89 / 0,76) e as contagens (43 / 12 / 480 / 17).
 
 ## Publicar

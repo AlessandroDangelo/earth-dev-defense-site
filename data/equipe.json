@@ -1,23 +1,23 @@
 {
   "_como_editar": "Contatos de cada integrante. \"\" = ainda não informado e null = a pessoa não tem: nos dois casos o campo não aparece no site. foto = caminho em assets/pessoas/ (sem foto aparecem as iniciais).",
   "nome": "Earth Dev Defense",
-  "descricao": "A Earth Dev Defense é uma equipe multidisciplinar formada por estudantes de graduação e pós-graduação, unida pela tecnologia, inovação e pelo desenvolvimento de soluções para desafios reais.",
-  "evento_local": "Ouro Preto, Brasil",
+  "descricao": "Earth Dev Defense is a multidisciplinary team of undergraduate and graduate students, brought together by technology, innovation and building solutions to real-world challenges.",
+  "evento_local": "Ouro Preto, Brazil",
   "pagina_oficial": "https://www.spaceappschallenge.org/2026/find-a-team/earth-dev-defense/",
   "fotos": [
     {
       "arquivo": "assets/equipe-1.jpg",
-      "legenda": "Equipe Earth Dev Defense no NASA Space Apps Challenge 2026, Ouro Preto"
+      "legenda": "Earth Dev Defense team at NASA Space Apps Challenge 2026, Ouro Preto"
     },
     {
       "arquivo": "assets/equipe-2.jpg",
-      "legenda": "Equipe Earth Dev Defense durante o hackathon"
+      "legenda": "Earth Dev Defense team during the hackathon"
     }
   ],
   "integrantes": [
     {
       "nome": "Pablo de Oliveira Passarini",
-      "funcao": "Responsável pela equipe",
+      "funcao": "Team lead",
       "email": "pablo.passarini@aluno.ufop.edu.br",
       "lattes": "http://lattes.cnpq.br/7038620047968631",
       "linkedin": "https://www.linkedin.com/in/pablo-passarini-82749218b/",
