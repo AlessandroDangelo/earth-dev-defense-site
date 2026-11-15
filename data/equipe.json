@@ -1,5 +1,5 @@
 {
-  "_como_editar": "Preencha email, lattes e linkedin de cada integrante. \"\" = falta preencher (aparece \"a preencher\"); null = a pessoa não tem (o campo some). 'foto' = caminho de uma foto em assets/pessoas/ (opcional; sem foto aparecem as iniciais).",
+  "_como_editar": "Contatos de cada integrante. \"\" = ainda não informado e null = a pessoa não tem: nos dois casos o campo não aparece no site. foto = caminho em assets/pessoas/ (sem foto aparecem as iniciais).",
   "nome": "Earth Dev Defense",
   "descricao": "A Earth Dev Defense é uma equipe multidisciplinar formada por estudantes de graduação e pós-graduação, unida pela tecnologia, inovação e pelo desenvolvimento de soluções para desafios reais.",
   "evento_local": "Ouro Preto, Brasil",
@@ -19,7 +19,7 @@
       "nome": "Pablo de Oliveira Passarini",
       "funcao": "Responsável pela equipe",
       "email": "pablo.passarini@aluno.ufop.edu.br",
-      "lattes": "",
+      "lattes": "http://lattes.cnpq.br/7038620047968631",
       "linkedin": "https://www.linkedin.com/in/pablo-passarini-82749218b/",
       "foto": "assets/pessoas/pablo.jpg"
     },
@@ -27,31 +27,31 @@
       "nome": "Luís Gustavo de Oliveira Miranda",
       "funcao": "",
       "email": "luis.miranda@ufop.edu.br",
-      "lattes": "",
+      "lattes": "http://lattes.cnpq.br/8399778399064039",
       "linkedin": null,
       "foto": "assets/pessoas/luis.jpg"
     },
     {
       "nome": "Henrique Ulhôa de Faria",
       "funcao": "",
-      "email": "",
-      "lattes": "",
-      "linkedin": "",
-      "foto": ""
+      "email": "henriquefariagmp9301@gmail.com",
+      "lattes": "http://lattes.cnpq.br/0177163328558156",
+      "linkedin": "https://www.linkedin.com/in/henrique-ulhoa-01539641b/",
+      "foto": "assets/pessoas/henrique.jpg"
     },
     {
       "nome": "Icaro Luiz Lage Vasconcelos",
       "funcao": "",
-      "email": "",
-      "lattes": "",
-      "linkedin": "",
-      "foto": ""
+      "email": "icaroluiz.vasconcelos@gmail.com",
+      "lattes": "http://lattes.cnpq.br/4465346017254205",
+      "linkedin": "https://www.linkedin.com/in/icaro-luiz/",
+      "foto": "assets/pessoas/icaro.jpg"
     },
     {
       "nome": "Alessandro D’Angelo",
       "funcao": "",
       "email": "aledangelopro@gmail.com",
-      "lattes": "",
+      "lattes": "https://lattes.cnpq.br/5187795369315102",
       "linkedin": "https://www.linkedin.com/in/alessandro-d-angelo-b063561b2",
       "foto": "assets/pessoas/alessandro.jpg"
     },
@@ -60,8 +60,8 @@
       "funcao": "",
       "email": "",
       "lattes": "",
-      "linkedin": "",
-      "foto": ""
+      "linkedin": "https://www.linkedin.com/in/gabriel-correia-21258b300/",
+      "foto": "assets/pessoas/gabriel.jpg"
     }
   ],
   "logo": "assets/logo-equipe.jpg"

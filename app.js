@@ -515,7 +515,7 @@ function contato(valor, tipo, nome) {
 }
 async function renderEquipe() {
   let eq;
-  try { eq = await (await fetch('data/equipe.json')).json(); } catch (_) { return; }
+  try { eq = await (await fetch('data/equipe.json', { cache: 'no-cache' })).json(); } catch (_) { return; }
   const fotos = eq.fotos || [];
   $('#equipe-conteudo').innerHTML = `
     <div class="equipe-topo">
@@ -588,7 +588,7 @@ async function iniciar() {
   renderEquipe();
   let dados;
   try {
-    dados = await (await fetch('data/dados_site.json')).json();
+    dados = await (await fetch('data/dados_site.json', { cache: 'no-cache' })).json();
   } catch (e) {
     $('#analise').insertAdjacentHTML('beforeend', '<p class="nota">Não foi possível carregar os dados. Abra o site por um servidor '
       + '(ex.: <code>python -m http.server</code> dentro da pasta <code>site/</code>).</p>');
