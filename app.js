@@ -46,6 +46,9 @@ const siteDoRecorte = (tile) => tile.replace(/_r\d+c\d+$/, '');
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const ic = (nome, cls = '') => `<svg class="ic ${cls}" aria-hidden="true"><use href="assets/icones.svg#i-${nome}"/></svg>`;
 const miniatura = (siteId) => `data/miniaturas/${siteId}.webp`;
+// cor de cada corpo nos ícones: Terra azul, Lua branca, Marte vermelha
+const corAlvo = () => (E.corpo === 'MOON' ? 'lua' : 'marte');
+const nomeCorpoAlvo = () => (E.corpo === 'MOON' ? 'Moon' : 'Mars');
 const ord = (n) => { const s = ['th', 'st', 'nd', 'rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); };
 
 /* ---------------------------------------------------------------- ranking */
@@ -107,7 +110,7 @@ function renderNumeros() {
   $('#numeros').innerHTML = itens.map(([n, r, i]) => `<div class="numero">${ic(i)}<b>${n}</b><span>${r}</span></div>`).join('');
 }
 function renderTrio() {
-  const trio = [['earth_atacama_yungay', 'Earth', 'terra-cor'], ['moon_haworth', 'Moon', 'alvo-cor'], ['mars_jezero', 'Mars', 'alvo-cor']]
+  const trio = [['earth_atacama_yungay', 'Earth', 'terra'], ['moon_haworth', 'Moon', 'lua'], ['mars_jezero', 'Mars', 'marte']]
     .map(([id, corpo, cor]) => ({ l: local(id), corpo, cor })).filter((x) => x.l);
   $('#trio').innerHTML = trio.map(({ l, corpo, cor }) => `<figure class="trio-item">
       <img src="${miniatura(l.site_id)}" alt="Shaded relief of ${esc(l.nome)} (${corpo})" loading="lazy" width="240" height="240">
@@ -264,8 +267,8 @@ function fmtUnid(v, u) {
 function halteres(site) {
   const feats = E.dados.dados.meta.features.filter((f) => f.grupo !== 'geologia');
   const W = 300, pad = 10;
-  let html = '<div class="legenda" aria-hidden="true"><span><span class="ponto alvo-cor"></span>Target (Moon/Mars)</span>'
-    + '<span><span class="ponto terra-cor"></span>Place on Earth</span>'
+  let html = `<div class="legenda" aria-hidden="true"><span><span class="ponto ${corAlvo()}"></span>Target (${nomeCorpoAlvo()})</span>`
+    + '<span><span class="ponto terra"></span>Place on Earth</span>'
     + '<span>Each row has its own scale: from the lowest to the highest value among all places.</span></div><div class="halteres">';
   let tabela = '<table><thead><tr><th>Feature</th><th class="num">Target</th><th class="num">Earth</th></tr></thead><tbody>';
   let grupoAtual = null;
@@ -284,7 +287,7 @@ function halteres(site) {
     html += `<div class="haltere"><span class="rot">${esc(f.nome)}</span>`
       + `<div class="trilha" role="img" aria-label="${esc(dica)}" data-dica="${esc(dica)}" tabindex="0">`
       + `<span class="trilha-ligacao" style="left:${Math.min(xa, xt).toFixed(2)}%;width:${Math.abs(xa - xt).toFixed(2)}%"></span>`
-      + `<span class="marca-terra" style="left:${xt.toFixed(2)}%"></span><span class="marca-alvo" style="left:${xa.toFixed(2)}%"></span>`
+      + `<span class="marca-terra" style="left:${xt.toFixed(2)}%"></span><span class="marca-alvo ${corAlvo()}" style="left:${xa.toFixed(2)}%"></span>`
       + '</div></div>';
     tabela += `<tr><td>${esc(f.nome)}</td><td class="num">${fmtUnid(va, f.unidade)}</td><td class="num">${fmtUnid(vt, f.unidade)}</td></tr>`;
   }
@@ -319,9 +322,9 @@ function renderDetalhe(rolar) {
   $('#detalhe').innerHTML = `
     <div class="comparacao">
       <figure class="figura"><img src="data/${esc(alvoImg.imagem_relevo)}" alt="Shaded relief of ${esc(alvoImg.nome)}" width="480" height="480">
-        <figcaption><span class="ponto alvo-cor"></span><strong>${esc(alvoImg.nome)}</strong> — 27 km window; yellow squares = analyzed tiles</figcaption></figure>
+        <figcaption><span class="ponto ${corAlvo()}"></span><strong>${esc(alvoImg.nome)}</strong> — 27 km window; yellow squares = analyzed tiles</figcaption></figure>
       <figure class="figura"><img src="data/${esc(site.imagem_relevo)}" alt="Shaded relief of ${esc(site.nome)}" width="480" height="480">
-        <figcaption><span class="ponto terra-cor"></span><strong>${esc(site.nome)}</strong> (${fmt(site.lat, 2)}°, ${fmt(site.lon, 2)}°)${l.publicado ? ' · <span class="selo selo-esa">ESA</span>' : ''}</figcaption></figure>
+        <figcaption><span class="ponto terra"></span><strong>${esc(site.nome)}</strong> (${fmt(site.lat, 2)}°, ${fmt(site.lon, 2)}°)${l.publicado ? ' · <span class="selo selo-esa">ESA</span>' : ''}</figcaption></figure>
       <div class="cartao placar">
         <div class="resumo-score"><span class="grande">${fmt(l.score, 0)}</span><span class="de">out of 100</span>
           <span class="contexto">overall · ${ord(l.pos)} with the current filter</span></div>
@@ -367,19 +370,27 @@ function renderZeus() {
   const chave = `k${E.k}`;
   const lista = linhasVisiveis().filter((l) => l.cocluster[chave] > 0).sort((a, b) => b.cocluster[chave] - a.cocluster[chave]);
   const q = E.dados.dados.meta.qualidade_k.find((x) => x.k === E.k);
+  // em quantos dos k grupos caem os quadrados do alvo (só leitura dos clusters já calculados)
+  const alvosIds = E.alvo === E.corpo ? E.dados.locais.filter((l) => l.corpo === E.corpo).map((l) => l.site_id) : [E.alvo];
+  const tilesAlvo = E.dados.dados.recortes.filter((r) => alvosIds.includes(r.site_id));
+  const contagem = {};
+  for (const r of tilesAlvo) contagem[r.clusters[chave]] = (contagem[r.clusters[chave]] || 0) + 1;
+  const nGrupos = Object.keys(contagem).length;
+  const resumo = `<p class="k-resumo">The AI splits all tiles into <b>k = ${E.k}</b> groups. The tiles of ${esc(nomeAlvoAtual())} fall into `
+    + `<b>${nGrupos}</b> of them; the places below share a group with part of those tiles.</p>`;
   // agrupa pela fração dos quadrados do alvo (o texto repetido aparece uma vez, como legenda)
   const faixas = [];
   for (const l of lista) {
     const f = faixas[faixas.length - 1];
     if (f && Math.abs(f.v - l.cocluster[chave]) < 1e-9) f.linhas.push(l); else faixas.push({ v: l.cocluster[chave], linhas: [l] });
   }
-  $('#zeus').innerHTML = lista.length
+  $('#zeus').innerHTML = resumo + (lista.length
     ? '<p class="zeus-legenda">Percentage = share of the target’s tiles that fall in the same group as the place.</p>'
       + faixas.map((f) => `<div class="zeus-grupo"><div class="zeus-faixa"><b>${fmt(100 * f.v, 0)}%</b>
           <span class="barra" aria-hidden="true"><span style="width:${(100 * f.v).toFixed(1)}%"></span></span></div>
           <div class="zeus-chips">${f.linhas.map((l) => `<button type="button" class="chip${l.controle ? ' controle' : ''}" data-site="${l.site_id}"
             aria-label="${esc(l.loc.nome)}, ${fmt(100 * f.v, 0)}% of the target’s tiles${l.controle ? ', control place' : ''}">${l.controle ? ic('building-2') : ''}${esc(l.loc.nome)}${l.controle ? ' <small>control</small>' : ''}</button>`).join('')}</div></div>`).join('')
-    : '<p class="nota">With this k, no place on Earth falls in the same group as the target: ZEUS sees it as unique.</p>';
+    : '<p class="nota">With this k, no place on Earth falls in the same group as the target: ZEUS sees it as unique.</p>');
   $('#zeus-qualidade').textContent = q ? `Clustering quality with k = ${E.k}: silhouette ${fmt(q.silhueta_embedding, 2)} (0 to 1, higher = better separated groups); suggested k = ${E.dados.dados.meta.k_sugerido}.` : '';
   $('#zeus').querySelectorAll('.chip').forEach((c) => c.addEventListener('click', () => selecionar(c.dataset.site)));
 }
@@ -425,8 +436,11 @@ function renderClima() {
       </tbody></table></div>
       <p class="nota">Mars model cell used: ${fmt(bloco.celula[0], 0)}°, ${fmt(bloco.celula[1], 0)}° E (2° × 2°, ~120 km).
         Pressure and rain enter on a log scale.</p></details>` : '';
+  const dica = E.alvo === E.corpo
+    ? `<p class="dica-clima">${ic('info')}<span>Showing the average of the 6 Mars sites. <a href="#passo-1">Pick one Mars landing site in step 1</a> to see the full comparison of the ${C.grandezas.length} climate quantities.</span></p>` : '';
   el.innerHTML = `
     <p class="intro-bloco">How much the climate of each place on Earth resembles that of Mars, independent of the ranking above.</p>
+    ${dica}
     <div class="clima-grade">
       <div class="cartao">
         <div class="resumo-score"><span class="grande">${fmt(c.sim, 0)}</span><span class="de">out of 100 in climate</span>
