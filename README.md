@@ -3,6 +3,7 @@
 Site estático, **em inglês** (exigência do julgamento global), (HTML + CSS + JavaScript, sem build e sem servidor de aplicação), com a identidade visual do
 NASA Space Apps Challenge (azul `#08103F`, branco `#FCFBFF`, vermelho `#D42804`, lima `#EAFE07` para detalhes).
 
+
 ## Seções
 Cada seção começa com uma frase que diz o que se vê ali e termina com o resultado principal em destaque. O que não
 cabe na tela principal fica em expansíveis ("Saiba mais", "Ver detalhes", "Ver todas").
@@ -66,3 +67,5 @@ Qualquer hospedagem de arquivos estáticos serve. No GitHub Pages: envie o repos
 - Imagens só reais e de uso livre (NASA/JPL/USGS, domínio público), baixadas para o projeto em WebP, com crédito na
   seção de fontes. Movimento curto e só de resposta (hover, pressão, transições), desligado com `prefers-reduced-motion`.
 - Cada gráfico tem tabela equivalente; funciona por teclado e em 375, 768 e 1440 px sem rolagem horizontal.
+
+
